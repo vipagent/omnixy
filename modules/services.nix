@@ -43,7 +43,7 @@ in
     };
 
     # Display Manager (disabled - using greetd instead)
-    displayManager.gdm.enable = false;
+    displayManager.gdm.enable = true;
 
     # Touchpad support
     libinput = {
