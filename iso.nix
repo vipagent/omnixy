@@ -105,19 +105,19 @@
   };
 
   # Timezone and locale
-  time.timeZone = "UTC"; # Will be configured during installation
+  time.timeZone = "Europe/Moscow"; # Will be configured during installation
   i18n = {
-    defaultLocale = "en_US.UTF-8";
+    defaultLocale = "ru_RU.UTF-8";
     extraLocaleSettings = {
-      LC_ADDRESS = "en_US.UTF-8";
-      LC_IDENTIFICATION = "en_US.UTF-8";
-      LC_MEASUREMENT = "en_US.UTF-8";
-      LC_MONETARY = "en_US.UTF-8";
-      LC_NAME = "en_US.UTF-8";
-      LC_NUMERIC = "en_US.UTF-8";
-      LC_PAPER = "en_US.UTF-8";
-      LC_TELEPHONE = "en_US.UTF-8";
-      LC_TIME = "en_US.UTF-8";
+      LC_ADDRESS = "ru_RU.UTF-8";
+      LC_IDENTIFICATION = "ru_RU.UTF-8";
+      LC_MEASUREMENT = "ru_RU.UTF-8";
+      LC_MONETARY = "ru_RU.UTF-8";
+      LC_NAME = "ru_RU.UTF-8";
+      LC_NUMERIC = "ru_RU.UTF-8";
+      LC_PAPER = "ru_RU.UTF-8";
+      LC_TELEPHONE = "ru_RU.UTF-8";
+      LC_TIME = "ru_RU.UTF-8";
     };
   };
 
@@ -138,16 +138,16 @@
     greetd.enable = lib.mkForce false;
     
     # Enable auto-login for live session
-    getty.autologinUser = "nixos";
+    getty.autologinUser = "sormat";
     
     # Keep X11 disabled - pure Wayland
     xserver.enable = lib.mkForce false;
   };
 
   # Live user configuration is handled by modules/users.nix
-  # The nixos user will be created automatically since omnixy.user = "nixos"
+  # The nixos user will be created automatically since omnixy.user = "sormat"
   # Remove any conflicting password settings
-  users.users.nixos = {
+  users.users.sormat = {
     initialPassword = lib.mkForce ""; # Empty password for live session
     password = lib.mkForce null;
     hashedPassword = lib.mkForce null;
@@ -157,8 +157,8 @@
 
   # Configure the user's environment to auto-start Hyprland
   environment.etc."profile.d/auto-hyprland.sh".text = ''
-    # Auto-start Hyprland for nixos user on tty1
-    if [[ "$(tty)" == "/dev/tty1" && "$USER" == "nixos" ]]; then
+    # Auto-start Hyprland for sormat user on tty1
+    if [[ "$(tty)" == "/dev/tty1" && "$USER" == "sormat" ]]; then
       # Set up Wayland environment
       export XDG_SESSION_TYPE=wayland
       export XDG_SESSION_DESKTOP=Hyprland
@@ -188,7 +188,7 @@
   # OmniXY configuration for ISO
   omnixy = {
     enable = true;
-    user = "nixos"; # Live session user
+    user = "sormat"; # Live session user
     theme = "tokyo-night";
     displayManager = "gdm"; # Override default for live session
     
@@ -359,7 +359,7 @@
     # Include lots of modules for hardware compatibility
     initrd.availableKernelModules = [
       # Storage
-      "ahci" "xhci_pci" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc"
+      "ahci" "xhci_pci" "nvme" "thunderbolt" "uas" "usbhid" "usb_storage" "sd_mod" "rtsx_pci_sdmmc"
       # Graphics
       "amdgpu" "radeon" "nouveau" "i915"
       # Network
@@ -387,16 +387,16 @@
   # Automatically start OmniXY demo on login
   environment.loginShellInit = ''
     # Show demo information on first login
-    if [ -f /home/nixos/.first-login ]; then
+    if [ -f /home/sormat/.first-login ]; then
       omnixy-demo
-      rm /home/nixos/.first-login
+      rm /home/sormat/.first-login
     fi
   '';
 
   # Create first-login marker
   system.activationScripts.createFirstLoginMarker = ''
-    touch /home/nixos/.first-login
-    chown nixos:users /home/nixos/.first-login
+    touch /home/sormat/.first-login
+    chown sormat:users /home/sormat/.first-login
   '';
 
   # Disable some services that might cause issues in live session

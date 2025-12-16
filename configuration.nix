@@ -92,19 +92,21 @@ in
   };
 
   # Timezone and locale
-  time.timeZone = "America/New_York";
+  time.timeZone = "Europe/Moscow";
   i18n = {
     defaultLocale = "en_US.UTF-8";
     extraLocaleSettings = {
-      LC_ADDRESS = "en_US.UTF-8";
-      LC_IDENTIFICATION = "en_US.UTF-8";
-      LC_MEASUREMENT = "en_US.UTF-8";
-      LC_MONETARY = "en_US.UTF-8";
-      LC_NAME = "en_US.UTF-8";
-      LC_NUMERIC = "en_US.UTF-8";
-      LC_PAPER = "en_US.UTF-8";
-      LC_TELEPHONE = "en_US.UTF-8";
-      LC_TIME = "en_US.UTF-8";
+    defaultLocale = "ru_RU.UTF-8";
+    extraLocaleSettings = {
+      LC_ADDRESS = "ru_RU.UTF-8";
+      LC_IDENTIFICATION = "ru_RU.UTF-8";
+      LC_MEASUREMENT = "ru_RU.UTF-8";
+      LC_MONETARY = "ru_RU.UTF-8";
+      LC_NAME = "ru_RU.UTF-8";
+      LC_NUMERIC = "ru_RU.UTF-8";
+      LC_PAPER = "ru_RU.UTF-8";
+      LC_TELEPHONE = "ru_RU.UTF-8";
+      LC_TIME = "ru_RU.UTF-8";
     };
   };
 
@@ -125,7 +127,7 @@ in
     excludePackages = [ pkgs.xterm ];
 
     # Display manager disabled - using tuigreet in services.nix
-    displayManager.gdm.enable = false;
+    displayManager.gdm.enable = true;
   };
 
   # Console configuration
@@ -144,7 +146,7 @@ in
   # Custom OmniXY settings
   omnixy = {
     enable = true;
-    user = "user"; # Change this to your username
+    user = "sormat"; # Change this to your username
     theme = currentTheme;
     displayManager = "tuigreet";
 

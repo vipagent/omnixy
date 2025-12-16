@@ -29,10 +29,10 @@ On an existing NixOS system:
 
 ```bash
 # Install directly from GitHub
-sudo nixos-rebuild switch --flake github:thearctesian/omnixy#omnixy
+sudo nixos-rebuild switch --flake github:vipagent/omnixy#omnixy
 
 # Or clone and install locally
-git clone https://github.com/thearctesian/omnixy
+git clone https://github.com/vipagent/omnixy
 cd omnixy
 sudo nixos-rebuild switch --flake .#omnixy
 ```
@@ -43,7 +43,7 @@ Build a live ISO with the OmniXY configuration:
 
 ```bash
 # Clone the repository
-git clone https://github.com/thearctesian/omnixy
+git clone https://github.com/vipagent/omnixy
 cd omnixy
 
 # Build the ISO (this will take time on first build)

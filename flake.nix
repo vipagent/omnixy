@@ -76,7 +76,7 @@
                 extraSpecialArgs = { inherit inputs; };
                 users = {
                   # Replace with your username
-                  user = import ./home.nix;
+                  sormat = import ./home.nix;
                 };
                 sharedModules = [
                   inputs.nix-colors.homeManagerModules.default
@@ -103,8 +103,8 @@
                     imports = [ ./home.nix ];
                     
                     # Override the username and home directory for ISO
-                    home.username = lib.mkForce "nixos";
-                    home.homeDirectory = lib.mkForce "/home/nixos";
+                    home.username = lib.mkForce "sormat";
+                    home.homeDirectory = lib.mkForce "/home/sormat";
                   };
                 };
                 sharedModules = [
