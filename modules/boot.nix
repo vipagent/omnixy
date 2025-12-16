@@ -100,8 +100,8 @@ in
     };
 
     # Theme switching integration
-    environment.systemPackages = [
-      plymouth-themes
+    #environment.systemPackages = [
+    #  plymouth-themes
 
       # Plymouth theme switching script
       (omnixy.makeScript "omnixy-plymouth-theme" "Switch Plymouth boot theme" ''
