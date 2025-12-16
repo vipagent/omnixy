@@ -139,7 +139,7 @@ in
   services.printing.enable = true;
 
   # System version
-  system.stateVersion = "24.05";
+  system.stateVersion = "26.05";
 
   # Custom OmniXY settings
   omnixy = {
