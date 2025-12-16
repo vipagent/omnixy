@@ -125,7 +125,7 @@ in
     excludePackages = [ pkgs.xterm ];
 
     # Display manager disabled - using tuigreet in services.nix
-    displayManager.gdm.enable = true;
+    displayManager.gdm.enable = false;
   };
 
   # Console configuration
