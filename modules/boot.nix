@@ -10,7 +10,7 @@ let
   omnixy = import ./helpers.nix { inherit config pkgs lib; };
 
   # Import our custom Plymouth theme package
-  #plymouth-themes = (pkgs.callPackage ../packages/plymouth-theme.nix {}) or pkgs.plymouth;
+  plymouth-themes = (pkgs.callPackage ../packages/plymouth-theme.nix {}) or pkgs.plymouth;
 in
 {
   config = mkIf (cfg.enable or true) {
@@ -100,8 +100,8 @@ in
     };
 
     # Theme switching integration
-    #environment.systemPackages = [
-    #  plymouth-themes
+    environment.systemPackages = [
+      plymouth-themes
 
       # Plymouth theme switching script
       (omnixy.makeScript "omnixy-plymouth-theme" "Switch Plymouth boot theme" ''

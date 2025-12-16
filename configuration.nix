@@ -20,7 +20,7 @@ in
     ./modules/lib.nix
     ./modules/core.nix
     ./modules/colors.nix
-    #./modules/boot.nix
+    ./modules/boot.nix
     ./modules/security.nix
     ./modules/fastfetch.nix
     ./modules/walker.nix
